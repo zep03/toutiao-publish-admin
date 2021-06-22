@@ -1,16 +1,25 @@
 <template>
   <div id="app">
-    <h1>黑马头条发布系统</h1>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      num: 1
+    }
+  },
+  methods: {
+    handleChange (value) {
+      console.log(value)
+    }
+  }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 
 </style>
