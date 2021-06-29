@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件对象</title>
+</head>
+<body>
+  <!--file 类型的input-->
+  <input type="file" id="file">
+  <button onclick="sendFile()">点击获取文件对象</button>
+  <img src="" alt="" id="image" width="200">
+  <!--一般文件上传，都是把用户选择的file-input的文件对象发送给服务端-->
+  <script>
+    function sendFile () {
+      const file = document.getElementById('file')
+      const fileObj = file.files[0]
+      console.log('fileObj:', fileObj)
+
+      // 如果文件类型为图片文件，可以处理图片预览
+      const blob = window.URL.createObjectURL(fileObj)
+      console.log('blob:', blob)
+      // blob数据可以直接赋值给 img标签的src属性来展示图片
+      document.getElementById('image').src = blob
+
+      // 然后把文件对象放到FormData中提交到服务端
+      const fd = new FormData()
+      fd.append('字段名称:', fileObj)
+      console.log('FormData:', fd)
+    }
+  </script>
+</body>
+</html>
